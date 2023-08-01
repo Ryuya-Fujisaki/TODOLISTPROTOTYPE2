@@ -1,38 +1,45 @@
 .App {
   text-align: center;
+  padding: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input {
+  width: 400px;
+  height: 1.6em;
+  outline: none;
+  margin-right: 10px;
+  border-style: none;
+  background-color: #ebebeb;
+  box-shadow: -4px -4px 8px #fff, 4px 4px 8px rgb(0 0 0 / 36%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+::placeholder {
+  color: #454444;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+button {
+  color: #454444;
+  border: none;
+  background-color: #ebebeb;
+  box-shadow: -4px -4px 8px #fff, 4px 4px 8px rgb(0 0 0 / 36%);
 }
 
-.App-link {
-  color: #61dafb;
+button:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(2px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul {
+  list-style: none;
+}
+
+.array {
+  text-align: left;
+  width: 500px;
+  position: fixed;
+  top: 60px;
+  left: 460px;
+  font-size: 14px;
 }
