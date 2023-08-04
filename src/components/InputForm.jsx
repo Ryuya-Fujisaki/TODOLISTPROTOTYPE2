@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-const InputForm = () => {
-    const [todos, setTodos] = useState([
-        { id: 1, title: '姉に誕生日プレゼントを買う' },
-        { id: 2, title: '論文提出' },
-        { id: 3, title: '市役所に住民票の写しをもらいに行く' }
-    ])
+const InputForm = ({setTodos}) => {
+    // const [todoId, setTodoId] = useState(todos.length + 1)
     const [todoTitle, setTodoTitle] = useState('')
-    const [todoId, setTodoId] = useState(todos.length + 1)
 
     const handleAddFormChanges = (e) => { setTodoTitle(e.target.value)}
 
     const handleAddTodo = () => {
-        setTodos([...todos, {id: todoId, title: todoTitle}])
-        setTodoId(todoId + 1)
+        // todoTitle が入力なしの場合実行しない
+        if (todoTitle === '') return
+        // setTodos([...todos, {id: todoId, title: todoTitle}])
+        setTodos(prev => {
+          const newTodos = [...prev, {id: prev.length + 1, title: todoTitle}]
+          return newTodos
+        })
+        // setTodoId(todoId + 1)
         setTodoTitle('')
     }
   return (
-    <div>
+    <div style={{position: 'relative'}}>
       <input 
         type="text"
         label="タイトル"
@@ -26,8 +27,28 @@ const InputForm = () => {
         onChange={handleAddFormChanges}
         className='input'
         placeholder="ここにTODOを入力し作成ボタンを押す"
+        style={{
+          position: 'absolute', 
+          top: '10px', 
+          left: '100px',
+          width: '400px',
+          height: '1.6em',
+          outline: 'none',
+          marginRight: '10px',
+          borderStyle: 'none',
+          backgroundColor: '#ebebeb',
+          boxShadow: '-4px -4px 8px #fff, 4px 4px 8px rgb(0 0 0 / 36%)',
+        }}
       />
-      <button onClick={handleAddTodo}>作成</button>
+      <button 
+        onClick={handleAddTodo}
+        style={{
+          position: 'absolute', 
+          top: '10px', 
+          left: '520px',
+        }}
+      >作成
+      </button>
     </div>
   )
 }
